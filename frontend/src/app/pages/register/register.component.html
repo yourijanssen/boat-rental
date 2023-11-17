@@ -1,0 +1,56 @@
+<!-- @author Youri Janssen -->
+<!-- Register Form Section -->
+<section class="registerForm">
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+        <!-- Email Form Control -->
+        <label for="Email Adress">Email Adress:</label>
+        <input
+            type="text"
+            id="email"
+            formControlName="email"
+            placeholder="name@gmail.com" />
+        <div *ngIf="isFormControlInvalid('email')" class="error-message">
+            Email is required. It should contain: <br />
+            - One "@" symbol; <br />
+            - A period (".") after the "@" symbol; <br />
+            - No spaces. <br />
+            - No quotation marks. <br />
+            - No Non-ASCII characters. <br />
+        </div>
+        <!-- Image Form Control -->
+        <label for="image">Password:</label>
+        <input
+            type="text"
+            id="password"
+            formControlName="password"
+            placeholder="password" />
+        <div *ngIf="isFormControlInvalid('password')" class="error-message">
+            Password is required. It should: <br />
+            - Have a minimum length of 8 characters; <br />
+            - Have a maximum length of 32 characters; <br />
+            - At least one uppercase letter; <br />
+            - At least one lowercase letter; <br />
+            - At least one number; <br />
+            - At least one special character.
+        </div>
+        <!-- Submit Button -->
+        <button type="submit">Sign Up</button>
+    </form>
+
+    <!-- Error Messages -->
+    <div *ngIf="invalidForm" class="error-message">
+        Please fill in all required fields correctly before submitting.
+    </div>
+    <div *ngIf="errorOccuredMessage" class="error-message">
+        An error occurred while signing up.
+    </div>
+
+    <div *ngIf="userExistsError" class="error-message">
+        A user with the provided email address already exists.
+    </div>
+
+    <div *ngIf="validForm && registerForm.valid" class="success-message">
+        Your account has successfully been created!
+    </div>
+</section>
+<a href="/login">Already have an account? Login here</a>

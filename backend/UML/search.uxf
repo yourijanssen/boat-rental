@@ -1,0 +1,259 @@
+<diagram program="umletino" version="15.1"><zoom_level>8</zoom_level><help_text>Space for diagram notes</help_text><element><id>Relation</id><coordinates><x>1600</x><y>608</y><w>176</w><h>32</h></coordinates><panel_attributes>lt=&lt;-
+Post request from client</panel_attributes><additional_attributes>200;20;10;20</additional_attributes></element><element><id>UMLGeneric</id><coordinates><x>1912</x><y>592</y><w>96</w><h>24</h></coordinates><panel_attributes>_:BoatController_</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1952</x><y>608</y><w>24</w><h>464</h></coordinates><panel_attributes>lt=.</panel_attributes><additional_attributes>10;10;10;560</additional_attributes></element><element><id>Relation</id><coordinates><x>1960</x><y>648</y><w>216</w><h>32</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;-
+request parameter</panel_attributes><additional_attributes>250;20;10;20</additional_attributes></element><element><id>UMLGeneric</id><coordinates><x>2160</x><y>664</y><w>16</w><h>64</h></coordinates><panel_attributes>
+bg=yellow</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>2160</x><y>616</y><w>24</w><h>456</h></coordinates><panel_attributes>lt=.</panel_attributes><additional_attributes>10;10;10;550</additional_attributes></element><element><id>UMLGeneric</id><coordinates><x>2120</x><y>600</y><w>96</w><h>24</h></coordinates><panel_attributes>_:BoatService_</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>2168</x><y>656</y><w>176</w><h>32</h></coordinates><panel_attributes>lt=&lt;-
+validate request parameter</panel_attributes><additional_attributes>200;20;10;20</additional_attributes></element><element><id>UMLGeneric</id><coordinates><x>2584</x><y>624</y><w>96</w><h>24</h></coordinates><panel_attributes>_:Database_</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>2712</x><y>472</y><w>384</w><h>632</h></coordinates><panel_attributes>lt=.
+Database
+fg=blue
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1960</x><y>952</y><w>216</w><h>32</h></coordinates><panel_attributes>lt=&lt;.
+sorted boats or server error</panel_attributes><additional_attributes>10;20;250;20</additional_attributes></element><element><id>Relation</id><coordinates><x>1600</x><y>960</y><w>368</w><h>32</h></coordinates><panel_attributes>lt=&lt;.
+If boats array: array of boats &amp; status 200</panel_attributes><additional_attributes>10;20;440;20</additional_attributes></element><element><id>UMLGeneric</id><coordinates><x>2328</x><y>672</y><w>16</w><h>48</h></coordinates><panel_attributes>
+bg=yellow</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>2328</x><y>624</y><w>24</w><h>448</h></coordinates><panel_attributes>lt=.</panel_attributes><additional_attributes>10;10;10;540</additional_attributes></element><element><id>UMLGeneric</id><coordinates><x>2288</x><y>608</y><w>96</w><h>24</h></coordinates><panel_attributes>_:SearchQuery_</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLFrame</id><coordinates><x>1528</x><y>472</y><w>1568</w><h>632</h></coordinates><panel_attributes>HTTP GET: /boat</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLActor</id><coordinates><x>1568</x><y>512</y><w>48</w><h>88</h></coordinates><panel_attributes>Actor</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLGeneric</id><coordinates><x>1720</x><y>576</y><w>96</w><h>24</h></coordinates><panel_attributes>_:BoatRoutes_</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLGeneric</id><coordinates><x>1760</x><y>624</y><w>16</w><h>40</h></coordinates><panel_attributes>
+bg=yellow</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1760</x><y>592</y><w>24</w><h>104</h></coordinates><panel_attributes>lt=.</panel_attributes><additional_attributes>10;10;10;110</additional_attributes></element><element><id>Relation</id><coordinates><x>1768</x><y>640</y><w>200</w><h>32</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;-
+request object</panel_attributes><additional_attributes>230;20;10;20</additional_attributes></element><element><id>UMLNote</id><coordinates><x>2288</x><y>504</y><w>264</w><h>56</h></coordinates><panel_attributes>@author Youri Janssen
+
+Sequence diagrams of the GET /boat API
+
+
+bg=blue</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>2784</x><y>640</y><w>24</w><h>352</h></coordinates><panel_attributes>lt=.</panel_attributes><additional_attributes>10;10;10;420</additional_attributes></element><element><id>UMLGeneric</id><coordinates><x>2744</x><y>624</y><w>96</w><h>24</h></coordinates><panel_attributes>_:BoatModel_</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLGeneric</id><coordinates><x>1952</x><y>656</y><w>16</w><h>80</h></coordinates><panel_attributes>
+bg=yellow</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1600</x><y>720</y><w>368</w><h>40</h></coordinates><panel_attributes>lt=&lt;.
+error message(s) and status 400
+</panel_attributes><additional_attributes>10;20;440;20</additional_attributes></element><element><id>Relation</id><coordinates><x>1960</x><y>712</y><w>216</w><h>32</h></coordinates><panel_attributes>lt=&lt;.
+error message(s)</panel_attributes><additional_attributes>10;20;250;20</additional_attributes></element><element><id>UMLGeneric</id><coordinates><x>1952</x><y>968</y><w>16</w><h>40</h></coordinates><panel_attributes>
+bg=yellow</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLGeneric</id><coordinates><x>1592</x><y>624</y><w>16</w><h>408</h></coordinates><panel_attributes>
+bg=yellow</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>888</x><y>240</y><w>136</w><h>32</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
+Composition</panel_attributes><additional_attributes>150;20;10;20</additional_attributes></element><element><id>UMLNote</id><coordinates><x>816</x><y>0</y><w>328</w><h>232</h></coordinates><panel_attributes>COMPOSITION Relationship characteristics:
+
+Strong Ownership: The container class (whole) has a direct 
+responsibility for the creation and destruction of the component 
+class (part). The part objects belong exclusively to the container.
+
+Lifecycle Dependency: The lifecycle of the parts is closely tied to 
+the lifecycle of the whole. When the whole is created, its parts are
+ created. When the whole is destroyed, its parts are also 
+destroyed.
+
+Aggregation: Composition is a form of aggregation where the 
+parts are strongly associated with the whole. Aggregation 
+represents a weaker relationship where parts can exist 
+independently of the whole.
+
+bg=white
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>560</x><y>240</y><w>160</w><h>32</h></coordinates><panel_attributes>lt=&lt;&lt;.
+Implements / Realizes</panel_attributes><additional_attributes>180;20;10;20</additional_attributes></element><element><id>Relation</id><coordinates><x>224</x><y>240</y><w>152</w><h>32</h></coordinates><panel_attributes>lt=&lt;.
+Dependency / Uses</panel_attributes><additional_attributes>170;20;10;20</additional_attributes></element><element><id>UMLNote</id><coordinates><x>160</x><y>128</y><w>304</w><h>104</h></coordinates><panel_attributes>DEPENDENCY Relationship:
+The dependent class uses the methods, attributes, types or other
+elements of the supplier class. This can be in the form of method
+calls, parameter types, property types, etc. 
+
+bg=white
+
+
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLNote</id><coordinates><x>24</x><y>312</y><w>304</w><h>136</h></coordinates><panel_attributes>BoatRoutes
+The BoatRoutes class is responsable for handling and setting 
+up the /boat HTTP routes and its conventions. 
+--
+BoatController:
+The BoatController class is responsible for receiving 
+and processing
+incoming HTTP requests on the /boat route from the client 
+and generate appropriate responses. 
+It sets the appropriate status code in the response to convey 
+the outcome of the request.
+bg=blue
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLNote</id><coordinates><x>24</x><y>664</y><w>304</w><h>136</h></coordinates><panel_attributes>BoatService:
+The BoatService is responsible for handling business logic.
+--
+Boat:
+The Boat class is responsable for creating a Boat
+ business model instance. 
+It includes the business logic a boat should adhere to.
+
+bg=yellow
+
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLNote</id><coordinates><x>0</x><y>976</y><w>328</w><h>200</h></coordinates><panel_attributes>BoatDatabaseInterface:
+The use of the BoatDatabaseInterface ensures that
+the database can easily be stubbed for testing purposes. The 
+BoatService class doesn't need to know the exact implementation 
+of the database; it only requires an object that adheres to the 
+BoatDatabaseInterface contract, which is in this case
+is either the BoatSequelizeDatabase or the BoatMysqlDatabase. 
+--
+BoatSequelizeDatabase:
+The BoatSequelizeDatabase is responsible for handling data
+storage and retrieval operations. It uses the Boat, Boatfacility and
+ Facility Models (database tables) to do this. 
+It uses the Boat interface to
+define the properties that a boat object should adhere to.
+
+
+bg=red
+
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLNote</id><coordinates><x>1504</x><y>328</y><w>224</w><h>96</h></coordinates><panel_attributes>The actor represents an 
+external entity that interacts 
+with the system we're modeling.
+It most cases this will be via
+a browser client.
+bg=green</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLActor</id><coordinates><x>1656</x><y>336</y><w>48</w><h>88</h></coordinates><panel_attributes>Actor</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>2088</x><y>328</y><w>24</w><h>96</h></coordinates><panel_attributes>lt=.</panel_attributes><additional_attributes>10;10;10;100</additional_attributes></element><element><id>UMLNote</id><coordinates><x>1944</x><y>304</y><w>184</w><h>120</h></coordinates><panel_attributes>The lifeline represents an
+individual participant in an 
+interaction, which could be 
+an object, an actor, or 
+a component.
+bg=green</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLNote</id><coordinates><x>1736</x><y>328</y><w>200</w><h>96</h></coordinates><panel_attributes>Activation refers to the period 
+of time during which an object 
+or participant is actively processing 
+a message or performing an action. 
+bg=green</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLNote</id><coordinates><x>2152</x><y>328</y><w>168</w><h>96</h></coordinates><panel_attributes>Messages are used to represent 
+interactions or communication 
+between lifelines (participants) 
+within a system.
+
+bg=green</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLGeneric</id><coordinates><x>1912</x><y>344</y><w>16</w><h>64</h></coordinates><panel_attributes>
+bg=yellow</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLGeneric</id><coordinates><x>2072</x><y>312</y><w>48</w><h>24</h></coordinates><panel_attributes>_:Object_</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLNote</id><coordinates><x>2328</x><y>296</y><w>184</w><h>128</h></coordinates><panel_attributes>Synchronous Message: 
+Represents a communication where 
+the message receiver processes the 
+request immediately and possibly 
+sends a response back to the sender 
+directly. 
+bg=green</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLNote</id><coordinates><x>2520</x><y>296</y><w>224</w><h>128</h></coordinates><panel_attributes>Asynchronous Message: 
+Represents a communication 
+where the message receiver starts an 
+asynchronous operation in response
+to the sender. While this occurs, other
+task or requests can continue processing.
+When the asynchronous operation completes,
+the receiver prepares a response to the sender.
+bg=green</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLNote</id><coordinates><x>2752</x><y>296</y><w>184</w><h>128</h></coordinates><panel_attributes>Return Message: 
+Represents the response 
+from the receiver to a 
+previously sent (a)synchronous 
+message. It indicates the completion 
+of an operation and the result 
+of that operation.
+bg=green</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>2344</x><y>432</y><w>160</w><h>32</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;-
+Synchronous message</panel_attributes><additional_attributes>180;20;10;20</additional_attributes></element><element><id>Relation</id><coordinates><x>2552</x><y>432</y><w>160</w><h>32</h></coordinates><panel_attributes>lt=&lt;-
+Asynchronous message</panel_attributes><additional_attributes>180;20;10;20</additional_attributes></element><element><id>Relation</id><coordinates><x>2776</x><y>432</y><w>152</w><h>32</h></coordinates><panel_attributes>lt=&lt;.
+return message</panel_attributes><additional_attributes>10;20;170;20</additional_attributes></element><element><id>Relation</id><coordinates><x>1592</x><y>584</y><w>24</w><h>488</h></coordinates><panel_attributes>lt=.</panel_attributes><additional_attributes>10;10;10;590</additional_attributes></element><element><id>Relation</id><coordinates><x>1600</x><y>992</y><w>368</w><h>32</h></coordinates><panel_attributes>lt=&lt;.
+If server error: Server error message &amp; status 500</panel_attributes><additional_attributes>10;20;440;20</additional_attributes></element><element><id>UMLSpecialState</id><coordinates><x>1592</x><y>1048</y><w>16</w><h>16</h></coordinates><panel_attributes>type=termination</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLSpecialState</id><coordinates><x>2160</x><y>1048</y><w>16</w><h>16</h></coordinates><panel_attributes>type=termination</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLNote</id><coordinates><x>488</x><y>40</y><w>304</w><h>192</h></coordinates><panel_attributes>IMPLEMENTATION/REALIZATION Relationship characteristics:
+
+Interface: The source class in the implementation relationship is 
+usually an interface (or abstract class). This type of class defines 
+a contract or a set of methods that must be implemented by the 
+classes that realize them.
+
+Method Realization: The implementing class must provide 
+functional implementations for all the methods declared in the 
+interface or abstract class it is implementing. The signatures of 
+the methods in the implementing class must match those 
+specified in the interface or abstract class.
+
+
+
+bg=white
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>584</x><y>512</y><w>328</w><h>96</h></coordinates><panel_attributes>BoatController
+--
+- boatService: BoatService
+--
++ constructor(boatService: BoatService) 
++ searchBoats(request: Request, response: Response): Promise&lt;void&gt;
+- isBoatArray(input: any): input is Boat[]
+- isStringArray(input: any): input is string[]
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>672</x><y>712</y><w>336</w><h>72</h></coordinates><panel_attributes>BoatService
+--
+- registerDatabase: BoatDatabaseInterface
+--
++ constructor(boatDatabase: BoatDatabaseInterface)
++ searchBoats( name: string): Promise&lt;Boat[] | string[] | 'server_error'&gt;
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>416</x><y>1144</y><w>336</w><h>80</h></coordinates><panel_attributes>BoatSequelizeDatabase
+--
++ searchBoats( name: string): Promise&lt;boolean&gt;
+- findBoatsByName(name: string): Promise&lt;BoatModel[]&gt;
+- mapBoatsData(boats: BoatModel[]): Promise&lt;Boat[]&gt; 
+- sortBoatsAlphabetically(mappedBoats: Boat[]): Boat[]</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>352</x><y>704</y><w>280</w><h>240</h></coordinates><panel_attributes>Boat
+--
+- name: string
+- price_per_day_in_cents: number 
+- capacity: number
+- license_required: boolean
+- skipper_required: boolean
+- facilities: string
+--
+- constructor(
+name: string, price_per_day_in_cents: number,
+capacity: number, license_required: boolean,
+skipper_required: boolean, facilities: string[]
+)
++ createBoat(
+name: string, price_per_day_in_cents: number,
+capacity: number, license_required: boolean,
+skipper_required: boolean, facilities: string[]
+): Boat
++ returnBoatsAlphabetically(names: Boat[]): Boat[]</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>640</x><y>1016</y><w>344</w><h>56</h></coordinates><panel_attributes>&lt;&lt;BoatDatabaseInterface&gt;&gt;
+--
++ searchBoats(name: string): Promise&lt;Boat[] | 'server_error'&gt;
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>328</x><y>312</y><w>608</w><h>352</h></coordinates><panel_attributes>lt=.
+CONTROLLER
+fg=blue
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>328</x><y>976</y><w>800</w><h>264</h></coordinates><panel_attributes>lt=.
+DATA
+fg=red</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>328</x><y>664</y><w>712</w><h>312</h></coordinates><panel_attributes>lt=.
+BUSINESS
+fg=yellow
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>576</x><y>344</y><w>336</w><h>104</h></coordinates><panel_attributes>BoatRoutes
+--
+- router: Router 
+- boatController: BoatController
+--
++ constructor(boatController: BoatController)       
+- setupRoutes(): void
+- searchBoats(request: Request, response: Response): Promise&lt;void&gt;
++ getBoatRouter(): Router</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>712</x><y>1064</y><w>112</w><h>96</h></coordinates><panel_attributes>lt=&lt;&lt;.
+Implements</panel_attributes><additional_attributes>120;10;120;60;10;60;10;100</additional_attributes></element><element><id>Relation</id><coordinates><x>736</x><y>440</y><w>80</w><h>88</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
+Composition</panel_attributes><additional_attributes>10;10;10;90</additional_attributes></element><element><id>Relation</id><coordinates><x>816</x><y>600</y><w>80</w><h>128</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
+Composition</panel_attributes><additional_attributes>10;10;10;140</additional_attributes></element><element><id>Relation</id><coordinates><x>816</x><y>776</y><w>80</w><h>256</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
+Composition</panel_attributes><additional_attributes>10;10;10;300</additional_attributes></element><element><id>UMLClass</id><coordinates><x>536</x><y>1080</y><w>80</w><h>24</h></coordinates><panel_attributes>BoatModel</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>568</x><y>1096</y><w>48</w><h>64</h></coordinates><panel_attributes>lt=&lt;.
+Uses</panel_attributes><additional_attributes>10;10;10;60</additional_attributes></element><element><id>Relation</id><coordinates><x>368</x><y>936</y><w>64</w><h>256</h></coordinates><panel_attributes>lt=&lt;.
+Uses</panel_attributes><additional_attributes>10;10;10;300;60;300</additional_attributes></element><element><id>Relation</id><coordinates><x>624</x><y>776</y><w>104</w><h>96</h></coordinates><panel_attributes>lt=&lt;.
+Uses</panel_attributes><additional_attributes>10;100;100;100;100;10</additional_attributes></element><element><id>UMLNote</id><coordinates><x>376</x><y>448</y><w>168</w><h>56</h></coordinates><panel_attributes>@author Youri Janssen
+
+Class Diagram of the /boat API
+bg=blue
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>800</x><y>1096</y><w>104</w><h>64</h></coordinates><panel_attributes>lt=.
+Implements</panel_attributes><additional_attributes>10;20;110;20;110;60</additional_attributes></element><element><id>UMLClass</id><coordinates><x>776</x><y>1144</y><w>336</w><h>80</h></coordinates><panel_attributes>BoatMysqlDatabase
+--
++ searchBoats(name: string): Promise&lt;Boat[] | 'server_error'&gt;
++ getFacilitiesForBoat( boatId: number, pool: Pool ): Promise&lt;string[]&gt;</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLGeneric</id><coordinates><x>2160</x><y>736</y><w>16</w><h>80</h></coordinates><panel_attributes>
+bg=yellow</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLGeneric</id><coordinates><x>2784</x><y>744</y><w>16</w><h>40</h></coordinates><panel_attributes>
+bg=yellow</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLGeneric</id><coordinates><x>2160</x><y>936</y><w>16</w><h>32</h></coordinates><panel_attributes>
+bg=yellow</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1600</x><y>824</y><w>368</w><h>40</h></coordinates><panel_attributes>lt=&lt;.
+empty array ([]) and status 200
+</panel_attributes><additional_attributes>10;20;440;20</additional_attributes></element><element><id>UMLGeneric</id><coordinates><x>1952</x><y>816</y><w>16</w><h>24</h></coordinates><panel_attributes>
+bg=yellow</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLGeneric</id><coordinates><x>2624</x><y>736</y><w>16</w><h>56</h></coordinates><panel_attributes>
+bg=yellow</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLGeneric</id><coordinates><x>2464</x><y>872</y><w>24</w><h>56</h></coordinates><panel_attributes>
+bg=yellow</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLSpecialState</id><coordinates><x>2784</x><y>968</y><w>16</w><h>16</h></coordinates><panel_attributes>type=termination</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLSpecialState</id><coordinates><x>1952</x><y>1048</y><w>16</w><h>16</h></coordinates><panel_attributes>type=termination</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>624</x><y>920</y><w>392</w><h>240</h></coordinates><panel_attributes>lt=&lt;.
+Uses</panel_attributes><additional_attributes>10;20;470;20;470;280</additional_attributes></element><element><id>UMLGeneric</id><coordinates><x>2424</x><y>608</y><w>96</w><h>24</h></coordinates><panel_attributes>_:Boat_</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>2464</x><y>624</y><w>24</w><h>448</h></coordinates><panel_attributes>lt=.</panel_attributes><additional_attributes>10;10;10;540</additional_attributes></element><element><id>Relation</id><coordinates><x>2168</x><y>704</y><w>176</w><h>40</h></coordinates><panel_attributes>lt=&lt;.
+error message(s) or null
+</panel_attributes><additional_attributes>10;20;200;20</additional_attributes></element><element><id>Relation</id><coordinates><x>2624</x><y>640</y><w>24</w><h>448</h></coordinates><panel_attributes>lt=.</panel_attributes><additional_attributes>10;10;10;540</additional_attributes></element><element><id>Relation</id><coordinates><x>2168</x><y>720</y><w>472</w><h>32</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;-
+search boats</panel_attributes><additional_attributes>570;20;10;20</additional_attributes></element><element><id>Relation</id><coordinates><x>1960</x><y>800</y><w>216</w><h>32</h></coordinates><panel_attributes>lt=&lt;.
+No boats found</panel_attributes><additional_attributes>10;20;250;20</additional_attributes></element><element><id>Relation</id><coordinates><x>2632</x><y>728</y><w>168</w><h>32</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;-
+search boats</panel_attributes><additional_attributes>190;20;10;20</additional_attributes></element><element><id>Relation</id><coordinates><x>2632</x><y>768</y><w>176</w><h>40</h></coordinates><panel_attributes>lt=&lt;.
+boats or null
+</panel_attributes><additional_attributes>10;20;200;20</additional_attributes></element><element><id>Relation</id><coordinates><x>2472</x><y>856</y><w>168</w><h>32</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;-
+sort boats alphabetically</panel_attributes><additional_attributes>10;20;190;20</additional_attributes></element><element><id>UMLGeneric</id><coordinates><x>2624</x><y>872</y><w>16</w><h>64</h></coordinates><panel_attributes>
+bg=yellow</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>2168</x><y>776</y><w>472</w><h>40</h></coordinates><panel_attributes>lt=&lt;.
+null
+</panel_attributes><additional_attributes>10;20;570;20</additional_attributes></element><element><id>Relation</id><coordinates><x>2480</x><y>912</y><w>160</w><h>40</h></coordinates><panel_attributes>lt=&lt;.
+sorted boats
+</panel_attributes><additional_attributes>180;20;10;20</additional_attributes></element><element><id>Relation</id><coordinates><x>2168</x><y>920</y><w>472</w><h>32</h></coordinates><panel_attributes>lt=&lt;.
+sorted boats or server error</panel_attributes><additional_attributes>10;20;570;20</additional_attributes></element><element><id>UMLClass</id><coordinates><x>528</x><y>1016</y><w>88</w><h>24</h></coordinates><panel_attributes>BoatfacilityModel</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>568</x><y>1032</y><w>48</w><h>64</h></coordinates><panel_attributes>lt=&lt;.
+Uses</panel_attributes><additional_attributes>10;10;10;60</additional_attributes></element><element><id>Relation</id><coordinates><x>440</x><y>1008</y><w>104</w><h>88</h></coordinates><panel_attributes>lt=&lt;.
+Uses</panel_attributes><additional_attributes>10;90;10;20;110;20</additional_attributes></element><element><id>UMLClass</id><coordinates><x>424</x><y>1080</y><w>88</w><h>24</h></coordinates><panel_attributes>FacilityModel</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>2904</x><y>640</y><w>24</w><h>352</h></coordinates><panel_attributes>lt=.</panel_attributes><additional_attributes>10;10;10;420</additional_attributes></element><element><id>UMLGeneric</id><coordinates><x>2864</x><y>624</y><w>96</w><h>24</h></coordinates><panel_attributes>_:FacilityModel_</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLGeneric</id><coordinates><x>2904</x><y>816</y><w>16</w><h>40</h></coordinates><panel_attributes>
+bg=yellow</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLSpecialState</id><coordinates><x>2904</x><y>968</y><w>16</w><h>16</h></coordinates><panel_attributes>type=termination</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>2632</x><y>800</y><w>288</w><h>32</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;-
+get facilities</panel_attributes><additional_attributes>340;20;10;20</additional_attributes></element><element><id>UMLGeneric</id><coordinates><x>2624</x><y>808</y><w>16</w><h>56</h></coordinates><panel_attributes>
+bg=yellow</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>2632</x><y>840</y><w>288</w><h>40</h></coordinates><panel_attributes>lt=&lt;.
+facilities or null
+</panel_attributes><additional_attributes>10;20;340;20</additional_attributes></element><element><id>UMLSpecialState</id><coordinates><x>2328</x><y>1048</y><w>16</w><h>16</h></coordinates><panel_attributes>type=termination</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLSpecialState</id><coordinates><x>2624</x><y>1056</y><w>16</w><h>16</h></coordinates><panel_attributes>type=termination</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLSpecialState</id><coordinates><x>2464</x><y>1048</y><w>16</w><h>16</h></coordinates><panel_attributes>type=termination</panel_attributes><additional_attributes></additional_attributes></element></diagram>

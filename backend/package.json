@@ -1,0 +1,57 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "To make it easy for you to get started with GitLab, here's a list of recommended next steps.",
+  "main": "server.ts",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "start": "ts-node-dev ./src/server.ts",
+    "test": "npx mocha --exit -r ts-node/register 'test/**/*.test.ts' --file test/mocha-setup.ts",
+    "lint": "npx eslint \"src/**/*.{js,jsx,ts,tsx,html,css,scss}\" \"test/*.test.ts\" --quiet --fix",
+    "format": "npx prettier \"src/**/*.{js,jsx,ts,tsx,html,css,scss}\" --write",
+    "check": "npm run lint & npm run format"
+  },
+  "repository": {
+    "type": "git",
+    "url": "ssh://git@gitlab.fdmci.hva.nl/ad-software-development-2324/fdmci-ict-ad-sd101/sem2/vloot/backend.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "argon2": "^0.31.1",
+    "express": "^4.18.2",
+    "mysql2": "^3.6.1",
+    "sequelize": "^6.33.0",
+    "sequelize-typescript": "^2.1.5",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^5.2.2"
+  },
+  "devDependencies": {
+    "@types/bcrypt": "^5.0.0",
+    "@types/chai": "^4.3.6",
+    "@types/express": "^4.17.17",
+    "@types/mocha": "^9.1.1",
+    "@types/mysql": "^2.15.21",
+    "@types/node": "^20.3.2",
+    "@types/regenerator-runtime": "^0.13.1",
+    "@types/sinon": "^10.0.16",
+    "@types/supertest": "^2.0.12",
+    "@typescript-eslint/eslint-plugin": "^5.59.11",
+    "@typescript-eslint/parser": "^5.59.11",
+    "chai": "^4.3.10",
+    "chai-as-promised": "^7.1.1",
+    "dotenv": "^16.3.1",
+    "eslint": "^7.32.0",
+    "mocha": "^9.2.2",
+    "prettier": "^2.8.8",
+    "regenerator-runtime": "^0.13.9",
+    "supertest": "^6.1.6",
+    "ts-node": "^10.9.1",
+    "ts-node-dev": "^2.0.0",
+    "ts-sinon": "^2.0.2",
+    "typescript": "^5.1.6"
+  }
+}
