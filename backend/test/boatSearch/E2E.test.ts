@@ -2,8 +2,8 @@ import request, { Response } from 'supertest';
 import { expect } from 'chai';
 import { SERVER } from '../../src/server';
 import sinon from 'sinon';
-import { BoatSequelizeDatabase } from '../../src/data/sequelize/boat';
-import { Boat } from '../../src/business/model/boat';
+import { BoatSequelizeDatabase } from '../../src/data/sequelize/get-boat';
+import { Boat } from '../../src/business/model/boats';
 
 /**
  * @author Youri Janssen

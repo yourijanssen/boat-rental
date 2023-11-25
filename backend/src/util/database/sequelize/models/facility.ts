@@ -1,4 +1,5 @@
 import {
+    AllowNull,
     AutoIncrement,
     BelongsToMany,
     Column,
@@ -6,13 +7,19 @@ import {
     Model,
     PrimaryKey,
     Table,
+    Unique,
 } from 'sequelize-typescript';
 import { BoatModel } from './boat';
-import { BoatfacilityModel } from './boatFacility';
+import { BoatFacilityModel } from './boatfacility';
 
 /**
  * @author Youri Janssen
  * Represents the Facility model in the database.
+ *
+ * + Additional changes made by @author Marcus K.
+ *   - Disallowed nulls & made it an unsigned interger
+ *   - Made values unique
+ *   - Declared the properties
  */
 @Table({
     tableName: 'Facility', // Specify the table name
@@ -21,12 +28,16 @@ import { BoatfacilityModel } from './boatFacility';
 export class FacilityModel extends Model<FacilityModel> {
     @PrimaryKey
     @AutoIncrement
-    @Column(DataType.INTEGER)
-    id!: number;
+    @AllowNull(false)
+    @Unique
+    @Column(DataType.INTEGER().UNSIGNED)
+    public declare id: number;
 
+    @AllowNull(false)
+    @Unique
     @Column(DataType.STRING)
-    facility!: string;
+    public declare facility: string;
 
-    @BelongsToMany(() => BoatModel, () => BoatfacilityModel)
-    boats!: BoatModel[];
+    @BelongsToMany(() => BoatModel, () => BoatFacilityModel)
+    public declare boats: BoatModel[];
 }

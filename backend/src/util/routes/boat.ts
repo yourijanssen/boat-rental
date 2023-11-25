@@ -1,28 +1,67 @@
-import express, { Request, Response, Router } from 'express';
-import { BoatController } from '../../controller/boat';
+import express, { Router, Request, Response } from 'express';
+import BoatController from '../../controller/boat';
+import { BoatService } from '../../business/service/boat';
+import { BoatMysqlDatabase } from '../../data/mysql/get-boat';
+import { BoatSequelizeDatabase } from '../../data/sequelize/get-boat';
 
 /**
- * @author Youri Janssen
- * Class for managing boat-related routes.
+ * A simple type for both our database files. I purposefully want these two split so I won't be destructive with his code.
+ * I mostly want this type so it doesn't fill so much space over and over everywhere.
+ * @author Marcus K.
  */
+type boatType = BoatMysqlDatabase | BoatSequelizeDatabase;
+
 export class BoatRoutes {
     private router: Router = express.Router();
 
-    /**
-     * @author Youri Janssen
-     * Creates an instance of BoatRoutes.
-     * @param {BoatController} boatController - The controller for managing boat-related actions.
-     */
-    constructor(private boatController: BoatController) {
-        this.setupRoutes();
+    constructor() {
+        this.setBoatsRoutes();
     }
 
     /**
-     * @author Youri Janssen
-     * Set up all boat-related routes.
+     * @author Youri Janssen && Marcus K.
+     * Checks which database we're currently using. This defaults to Sequelize which doesn't make me too happy though.
      */
-    private setupRoutes(): void {
-        this.router.get('/search', this.searchBoats);
+    private databaseSwitch(): boatType {
+        if (process.env.DB_TYPE === 'sql') {
+            return new BoatMysqlDatabase();
+        } else {
+            return new BoatSequelizeDatabase();
+        }
+    }
+
+    /**
+     * @author Youri Janssen && Marcus K.
+     * Initializes the boat controller based on the database type and loads routes.
+     */
+    private createController(boatDatabase: boatType): BoatController {
+        const boatService: BoatService = new BoatService(boatDatabase);
+        const boatsController: BoatController = new BoatController(boatService);
+        return boatsController;
+    }
+
+    /**
+     * This function opens up the database routes related to boats under these paths. Binded mine just like Thijs did with his.
+     * @author Marcus K. && Youri Janssen (with the help of Thijs van Rixoort)
+     */
+    private setBoatsRoutes(): void {
+        this.router.get('/detailed', this.openRoute.bind(this));
+
+        this.router.get('/:name', this.searchBoats);
+    }
+
+    /**
+     * This function takes the database we're currently using and creates the controller with it.
+     * @author Marcus K.
+     */
+    private openRoute(
+        request: Request<object, object, object, { id: string }>,
+        response: Response
+    ): void {
+        const database: boatType = this.databaseSwitch();
+
+        const boatsController = this.createController(database);
+        boatsController.getBoat(request, response);
     }
 
     /**
@@ -32,15 +71,18 @@ export class BoatRoutes {
      * @param {Response} response - The Express response object.
      */
     private searchBoats = (request: Request, response: Response): void => {
-        this.boatController.searchBoats(request, response);
+        const database: boatType = this.databaseSwitch();
+
+        const boatsController = this.createController(database);
+        boatsController.searchBoats(request, response);
     };
 
     /**
-     * @author Youri Janssen
-     * Gets the Express router for boat-related routes.
-     * @returns {Router} The Express router for boat-related routes.
+     * This function simply returns the router here, so that the route can use these.
+     * @returns BoatRoutes.Router
+     * @author Marcus K.
      */
-    public getBoatRouter(): Router {
+    public assignRoutes(): Router {
         return this.router;
     }
 }

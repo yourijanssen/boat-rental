@@ -10,6 +10,10 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { HeaderComponent } from './components/header/header.component';
 import { HomeComponent } from './pages/home/home.component';
 import { BoatComponent } from './pages/boat/boat.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { LoginComponent } from './components/login/login.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { BoatDetailsComponent } from './pages/boat-details/boat-details.component';
 
 /**
  * @author Youri Janssen //entire file
@@ -26,7 +30,9 @@ import { BoatComponent } from './pages/boat/boat.component';
         BoatComponent,
         PageNotFoundComponent,
         HomeComponent,
-        HeaderComponent
+        HeaderComponent,
+        LoginComponent,
+        BoatDetailsComponent
     ],
     /** The imports array specifies the modules that this module depends on.*/
     imports: [
@@ -35,7 +41,9 @@ import { BoatComponent } from './pages/boat/boat.component';
         FormsModule,
         HttpClientModule,
         ReactiveFormsModule,
-        FontAwesomeModule
+        FontAwesomeModule,
+        BrowserAnimationsModule,
+        MatDialogModule
     ],
     /** Providers array is where you could include service providers if needed. */
     providers: [],

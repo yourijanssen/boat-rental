@@ -5,8 +5,10 @@ import {
     PrimaryKey,
     AutoIncrement,
     DataType,
+    HasOne,
 } from 'sequelize-typescript';
 import { Roles } from '../../../../business/model/user';
+import { Session } from './session';
 
 /**
  * @author Youri Janssen
@@ -42,4 +44,7 @@ export class UserModel extends Model<UserModel> {
 
     @Column({ type: DataType.TINYINT, allowNull: false })
     public active!: number;
+
+    @HasOne(() => Session)
+    public login?: Session;
 }

@@ -6,13 +6,23 @@ import {
     AutoIncrement,
     DataType,
     BelongsToMany,
+    Unique,
+    Default,
+    ForeignKey,
+    BelongsTo,
 } from 'sequelize-typescript';
-import { BoatfacilityModel } from './boatFacility';
 import { FacilityModel } from './facility';
+import { BoatFacilityModel } from './boatfacility';
+import BoatTypeModel from './boatmodel';
 
 /**
  * @author Youri Janssen
  * Represents the User model in the database.
+ *
+ * + Additional changes made by @author Marcus K.
+ *   - Set Default values
+ *   - Made values unique
+ *   - Declared the properties
  */
 @Table({
     tableName: 'Boat', // Specify the table name
@@ -20,37 +30,47 @@ import { FacilityModel } from './facility';
 })
 export class BoatModel extends Model<BoatModel> {
     @PrimaryKey
+    @Unique
     @AutoIncrement
-    @Column({ type: DataType.INTEGER.UNSIGNED, allowNull: false })
-    id!: number;
+    @Column({ type: DataType.INTEGER().UNSIGNED, allowNull: false })
+    public declare id: number;
 
-    @Column({ type: DataType.STRING, allowNull: false })
-    name!: string;
+    @Column({ type: DataType.STRING(), allowNull: false })
+    public declare name: string;
 
-    @Column({ type: DataType.MEDIUMINT.UNSIGNED, allowNull: false })
-    price_per_day_in_cents!: number;
+    @Column({ type: DataType.MEDIUMINT().UNSIGNED, allowNull: false })
+    public declare price_per_day_in_cents: number;
 
-    @Column({ type: DataType.TINYINT.UNSIGNED, allowNull: false })
-    capacity!: number;
+    @Column({ type: DataType.TINYINT().UNSIGNED, allowNull: false })
+    public declare capacity: number;
 
-    @Column({ type: DataType.TINYINT, allowNull: false })
-    license_required!: boolean;
+    @Column({ type: DataType.TINYINT(), allowNull: false })
+    public declare license_required: boolean;
 
-    @Column({ type: DataType.TINYINT, allowNull: false })
-    skipper_required!: boolean;
+    @Column({ type: DataType.TINYINT(), allowNull: false })
+    public declare skipper_required: boolean;
 
-    @Column(DataType.INTEGER.UNSIGNED)
-    model_id!: number;
+    @ForeignKey(() => BoatTypeModel)
+    @Column(DataType.INTEGER().UNSIGNED)
+    public declare model_id: number;
 
-    @Column(DataType.INTEGER.UNSIGNED)
-    fabrication_year!: number;
+    @Column(DataType.INTEGER().UNSIGNED)
+    public declare fabrication_year: number;
 
-    @Column(DataType.TINYINT.UNSIGNED)
-    length_in_meters!: number;
+    @Column(DataType.TINYINT().UNSIGNED)
+    public declare length_in_meters: number;
 
-    @Column(DataType.TINYINT)
-    active!: number;
+    @Default('Deze boot heeft nog geen beschrijving!')
+    @Column(DataType.TEXT)
+    public declare description: string;
 
-    @BelongsToMany(() => FacilityModel, () => BoatfacilityModel)
-    facilities!: FacilityModel[];
+    @Default(1)
+    @Column(DataType.TINYINT())
+    public declare active: boolean;
+
+    @BelongsToMany(() => FacilityModel, () => BoatFacilityModel)
+    public declare facilities: FacilityModel[];
+
+    @BelongsTo(() => BoatTypeModel)
+    public declare BoatTypeModel: BoatTypeModel;
 }

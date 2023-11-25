@@ -1,5 +1,6 @@
 import { use } from 'chai';
 import express from 'express';
+import cookieParser from 'cookie-parser';
 import { MysqlDatabaseConfig } from './util/database/mysql/mysql';
 import { SequelizeDatabaseConfig } from './util/database/sequelize/sequelize';
 import { RouteHandler } from './util/routeHandler';
@@ -83,6 +84,9 @@ class Server {
             res.setHeader('Access-Control-Allow-Credentials', 'true');
             next();
         });
+
+        /* A cookie parser so we can read and use cookies from requests */
+        this.app.use(cookieParser());
     }
 
     /**

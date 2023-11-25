@@ -1,12 +1,14 @@
 import express from 'express';
-import { Boat } from '../business/model/boat';
+import { Request, Response } from 'express';
+import { Boat } from '../business/model/boats';
 import { BoatService } from '../business/service/boat';
+import { detailedBoat } from '../business/model/boat-detailed';
 
 /**
- * @author Youri Janssen
+ * @author Youri Janssen && Marcus K.
  * Boat controller class handling boat-related operations.
  */
-export class BoatController {
+export default class BoatController {
     /**
      * @author Youri Janssen
      * Constructor for BoatController.
@@ -70,6 +72,35 @@ export class BoatController {
             typeof boatSearchResult[0] === 'string'
         ) {
             response.status(400).json(boatSearchResult as string[]);
+        }
+    }
+
+    /**
+     * A simple GET Request function, aiming to get a copy of all the data from one (1) boat that a user can access by calling detailedBoatService.findBoat().
+     * @param request is the incoming HTTP Request containing an ID.
+     * @param response is the outgoing HTTP Response, containing all the data a boat detail page would need.
+     * @author Marcus K.
+     */
+    public async getBoat(
+        request: Request<object, object, object, { id: string }>,
+        response: Response
+    ): Promise<void> {
+        const requestedBoat: number = parseInt(request.query.id);
+        try {
+            const foundBoat: detailedBoat | null =
+                await this.boatService.findBoat(requestedBoat);
+            foundBoat
+                ? response.status(200).json(foundBoat)
+                : response
+                      .status(400)
+                      .json(
+                          'The Requested Boat Cannot Be Found, Please Try Another Boat.'
+                      );
+        } catch (error) {
+            console.log(error);
+            response
+                .status(503)
+                .json('This Service Is Currenly Unavailable. ' + error);
         }
     }
 }

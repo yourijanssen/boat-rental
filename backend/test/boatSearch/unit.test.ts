@@ -1,5 +1,5 @@
 import { expect } from 'chai';
-import { Boat } from '../../src/business/model/boat';
+import { Boat } from '../../src/business/model/boats';
 import { SearchQuery } from '../../src/business/model/searchQuery';
 
 /**

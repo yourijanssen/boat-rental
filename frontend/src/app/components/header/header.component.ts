@@ -11,6 +11,10 @@ import {
     faMagnifyingGlass,
     faShoppingCart
 } from '@fortawesome/free-solid-svg-icons';
+import { MatDialog } from '@angular/material/dialog';
+import { LoginComponent } from '../login/login.component';
+import { AuthenticationService } from 'src/app/services/authentication.service';
+import { HeaderService } from 'src/app/services/header.service';
 
 @Component({
     selector: 'app-header',
@@ -18,25 +22,15 @@ import {
     styleUrls: ['./header.component.css']
 })
 export class HeaderComponent {
-    /**
-     * The @Input pageType is a simple object which accepts external changes and apply them directly upon the header
-     * @var title is the string that shows as an optional title on the page
-     * @var biggerBanner is a boolean deciding to make the colour banner taller or not.
-     * @var search is a boolean deciding to show a searchbar or not.
-     * @var colour is a string with the value of what colour to render.
-     * @author Marcus K.
-     */
-    @Input() pageType: {
-        title?: string;
-        biggerBanner?: boolean;
-        search?: boolean;
-        colour?: string;
-    } = {
-        title: '',
-        biggerBanner: false,
-        search: false,
-        colour: '#456ed8'
-    };
+    // /**
+    //  * The @Input pageType is a simple object which accepts external changes and apply them directly upon the header
+    //  * @var title is the string that shows as an optional title on the page
+    //  * @var biggerBanner is a boolean deciding to make the colour banner taller or not.
+    //  * @var search is a boolean deciding to show a searchbar or not.
+    //  * @var colour is a string with the value of what colour to render.
+    //  * @author Marcus K.
+    //  */
+    // @Input()
 
     /**
      * The @Input userData would change what letters to render on the webpage if an user is logged in, only the first 2 get grabbed. Never let it default.
@@ -52,16 +46,34 @@ export class HeaderComponent {
     @ViewChild('dropdown') dropdown!: ElementRef;
     @ViewChild('userButton') userButton!: ElementRef;
 
+    public pageType: {
+        title?: string;
+        biggerBanner?: boolean;
+        search?: boolean;
+        colour?: string;
+    } = {};
+
     /**
      * The constructor holds a simple function to detect if someone is clicking on the dropdown or not. Fires per click, might be a resource hog?
      * @var renderer is the Renderer on the HeaderComponent. We're not allowed to use @ViewChild iirc, but this is the recommended method.
-     * @author Marcus K.
+     * @param overlay A MatDialog object that is used for the login overlay.
+     * @param authService An authentication service used to check wether the user is logged in or not.
+     * @author Marcus K & Thijs van Rixoort
      */
-    constructor(private renderer: Renderer2) {
+    constructor(
+        private renderer: Renderer2,
+        public overlay: MatDialog,
+        private authService: AuthenticationService,
+        private headerService: HeaderService
+    ) {
         this.renderer.listen('window', 'click', (clickEvent: Event) =>
             this.dropdownOff(clickEvent)
         );
         this.logInState();
+
+        this.headerService.headerData.subscribe(value => {
+            this.pageType = value;
+        });
     }
 
     public faMagnifyingGlass: IconDefinition = faMagnifyingGlass;
@@ -85,20 +97,24 @@ export class HeaderComponent {
      * @author Marcus K.
      */
     dropdownOff(clickEvent: Event): void {
-        // if (
-        //     clickEvent.target !== this.userButton.nativeElement &&
-        //     clickEvent.target !== this.dropdown.nativeElement
-        // ) {
-        //     this.dropdownVisible = false;
-        // }
+        if (
+            this.userButton &&
+            this.dropdown &&
+            clickEvent.target !== this.userButton.nativeElement &&
+            clickEvent.target !== this.dropdown.nativeElement
+        ) {
+            this.dropdownVisible = false;
+        }
     }
 
     /**
      * @function logInState is a simple check to see if there is a cookie for a user, if so it enables the logged in rendering.
-     * @author Marcus K.
+     * @author Marcus K & Thijs van Rixoort
      */
     logInState(): void {
-        this.loggedIn = document.cookie.includes('session_id=');
+        this.authService.isUserLoggedIn.subscribe(value => {
+            this.loggedIn = value;
+        });
     }
 
     /**
@@ -108,7 +124,17 @@ export class HeaderComponent {
      */
     logOut(): void {
         document.cookie =
-            'token' + '=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+            'session_token' + '=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
         window.location.replace('/');
+    }
+
+    /**
+     * Opens a login pop-up dialog containing a simple form.
+     * @author Thijs van Rixoort
+     */
+    public openLoginOverlay(): void {
+        this.overlay.open(LoginComponent, {
+            width: '50%'
+        });
     }
 }

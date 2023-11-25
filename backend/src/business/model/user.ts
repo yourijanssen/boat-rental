@@ -14,7 +14,6 @@ export enum Roles {
  * Represents a user business object.
  */
 export class User {
-    private id?: number;
     private firstName?: string;
     private lastName?: string;
     private mobile_number?: string;
@@ -27,6 +26,10 @@ export class User {
     private house_number?: string;
     private type: Roles;
     private active: number;
+    private _id?: number | undefined;
+    public get id(): number | undefined {
+        return this._id;
+    }
 
     /**
      * @author Youri Janssen
@@ -50,7 +53,7 @@ export class User {
         password: string,
         type: Roles,
         active: number,
-        id?: number,
+        id: number | undefined = undefined,
         firstName?: string,
         lastName?: string,
         mobile_number?: string,
@@ -64,7 +67,6 @@ export class User {
         this.password = password;
         this.type = type;
         this.active = active;
-        if (id) this.id = id;
         if (firstName) this.firstName = firstName;
         if (lastName) this.lastName = lastName;
         if (mobile_number) this.mobile_number = mobile_number;
@@ -73,6 +75,7 @@ export class User {
         if (zip_code) this.zip_code = zip_code;
         if (street) this.street = street;
         if (house_number) this.house_number = house_number;
+        this._id = id;
     }
 
     /**
@@ -90,6 +93,26 @@ export class User {
         active: number
     ): User {
         return new User(email, password, type, active);
+    }
+
+    /**
+     * Creates a User instance with an id.
+     * @param id The user's id.
+     * @param email The user's email.
+     * @param password The user's password.
+     * @param type The user type, which is 'admin' or 'user'.
+     * @param active The active boolean. If the user is active it is true, else false.
+     * @returns the created User instance.
+     * @author Thijs van Rixoort
+     */
+    public static createUserWithId(
+        id: number,
+        email: string,
+        password: string,
+        type: Roles,
+        active: number
+    ): User {
+        return new User(email, password, type, active, id);
     }
 
     /**
@@ -120,10 +143,10 @@ export class User {
 
     /**
      * @author Youri Janssen
-     * Hashes the password using the Argon2 algorithm.
-     * The hash format is structured as follows: $argon2id$v=19$m=4096,t=3,p=1$<salt>$<hash>
-     * @param {string} password - The password to be hashed and salted.
-     * @returns {Promise<string>} A promise that resolves with the hashed and salted password.
+     * Hashes a user's password using bcrypt with salt rounds.
+     * @param {string} password - The password to be hashed.
+     *   A higher value increases security but also computational cost.
+     * @returns {Promise<string>} A promise that resolves to the hashed password.
      */
     public hashPassword(password: string): Promise<string> {
         return argon2.hash(password);
@@ -172,5 +195,15 @@ export class User {
      */
     get getActive(): number {
         return this.active;
+    }
+
+    /**
+     * Checks if the password saved in this instance is the same as the password parameter.
+     * @param password The password that you want to check, unhashed.
+     * @returns true when the passwords are the same, else false.
+     * @author Thijs van Rixoort
+     */
+    public async validatePassword(password: string): Promise<boolean> {
+        return await argon2.verify(this.password, password);
     }
 }

@@ -1,7 +1,7 @@
-import { BoatSequelizeDatabase } from '../../src/data/sequelize/boat';
+import { BoatSequelizeDatabase } from '../../src/data/sequelize/get-boat';
 import sinon from 'sinon';
 import { expect } from 'chai';
-import { Boat } from '../../src/business/model/boat';
+import { Boat } from '../../src/business/model/boats';
 import { BoatService } from '../../src/business/service/boat';
 
 /**

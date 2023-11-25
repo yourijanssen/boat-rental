@@ -84,6 +84,8 @@
 
     font-size: 2.5rem;
     font-weight: 600;
+
+    user-select: none;
 }
 
 .iconButton {
@@ -95,7 +97,8 @@
 }
 
 .liStyle:hover {
-    filter: brightness(1.25);
+    color: #6b6b6b;
+    
 }
 
 .userInitials {
@@ -120,7 +123,7 @@
     padding: unset;
 
     position: absolute;
-    background-color: #f8f8f8f8;
+    background-color: #f8f8f8c9;
 
     border: 0.15rem solid;
     border-top: none;
@@ -128,15 +131,22 @@
     border-radius: 0rem 0rem 0rem 1rem;
 
     right: 0rem;
+
+    backdrop-filter: blur(1rem);
 }
 
 .liStyle {
-    background-color: #f8f8f8;
+    text-align: center;
+    
+    color: black;
     padding: 0.5rem;
     margin: 0.5rem;
 
     font-weight: 600;
     font-size: 1.25rem;
+
+    
+    background: radial-gradient(closest-side, #ffffffb0, #ffffff00);
 }
 
 .liStyle,

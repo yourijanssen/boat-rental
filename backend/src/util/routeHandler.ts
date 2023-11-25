@@ -4,12 +4,16 @@ import { RegisterDatabaseInterface } from '../data/interfaces/register';
 import { RegisterSequelizeDatabase } from '../data/sequelize/register';
 import { RegisterMysqlDatabase } from '../data/mysql/register';
 import { RegisterRoutes } from './routes/register';
-import { BoatController } from '../controller/boat';
-import { BoatDatabaseInterface } from '../data/interfaces/boat';
-import { BoatMysqlDatabase } from '../data/mysql/boat';
-import { BoatSequelizeDatabase } from '../data/sequelize/boat';
+import { SessionDatabaseInterface } from '../data/interfaces/session';
+import { SessionMysqlDatabase } from '../data/mysql/session';
+import { SessionSequelizeDatabase } from '../data/sequelize/session';
+import { SessionService } from '../business/service/session';
+import { SessionController } from '../controller/session';
+import { SessionRoutes } from './routes/session';
+import { UserDatabaseInterface } from '../data/interfaces/user';
+import { UserMysqlDatabase } from '../data/mysql/user';
+import { UserSequelizeDatabase } from '../data/sequelize/user';
 import { BoatRoutes } from './routes/boat';
-import { BoatService } from '../business/service/boat';
 import { RegisterService } from '../business/service/register';
 
 /**
@@ -31,7 +35,9 @@ export class RouteHandler {
     constructor() {
         this.testRoute();
         this.initRegisterController();
-        this.initBoatController();
+        this.initLoginController();
+        this.boatsRoutes();
+        // this.initBoatController();
     }
 
     /**
@@ -63,23 +69,6 @@ export class RouteHandler {
 
     /**
      * @author Youri Janssen
-     * Initializes the boat controller based on the database type and loads routes.
-     */
-    public initBoatController(): void {
-        let database: BoatDatabaseInterface;
-
-        if (process.env.DB_TYPE === 'sql') {
-            database = new BoatMysqlDatabase();
-        } else {
-            database = new BoatSequelizeDatabase();
-        }
-        const usedService: BoatService = new BoatService(database);
-        const boatController = new BoatController(usedService);
-        this.loadBoatAPI(boatController);
-    }
-
-    /**
-     * @author Youri Janssen
      * Loads route for the register controller.
      * @param {RegisterController} registerController - loads route for the register controller.
      */
@@ -91,14 +80,48 @@ export class RouteHandler {
     }
 
     /**
-     * @author Youri Janssen
-     * Loads route for the boat controller.
-     * @param {BoatController} boatController - The boat controller instance.
+     * Initializes the LoginController with the correct database implementation.
+     * @author Thijs van Rixoort
      */
-    private loadBoatAPI(boatController: BoatController): void {
-        this.router.use(
-            '/boat',
-            new BoatRoutes(boatController).getBoatRouter()
+    private initLoginController(): void {
+        let sessionDatabase: SessionDatabaseInterface;
+        let userDatabase: UserDatabaseInterface;
+
+        if (process.env.DB_TYPE === 'sql') {
+            sessionDatabase = new SessionMysqlDatabase();
+            userDatabase = new UserMysqlDatabase();
+        } else {
+            sessionDatabase = new SessionSequelizeDatabase();
+            userDatabase = new UserSequelizeDatabase();
+        }
+
+        const usedService: SessionService = new SessionService(
+            sessionDatabase,
+            userDatabase
         );
+        const usedController = new SessionController(usedService);
+
+        this.loadSessionAPI(usedController);
+    }
+
+    /**
+     * Initializes the endpoints for the login functionality.
+     * @author Thijs van Rixoort
+     */
+    private loadSessionAPI(sessionController: SessionController): void {
+        this.router.use(
+            '/session',
+            new SessionRoutes(sessionController).getRouter()
+        );
+    }
+
+    /**
+     * Gets the Express Router instance with the application's routes loaded.
+     * @returns {Router} The Express Router instance.
+     * @function boatsRoutes() very simply sets up the route for boats related content.
+     * @author Marcus K && Youri Janssen.
+     */
+    private boatsRoutes(): void {
+        this.router.use('/boat', new BoatRoutes().assignRoutes());
     }
 }

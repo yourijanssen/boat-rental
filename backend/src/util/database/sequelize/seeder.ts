@@ -1,5 +1,5 @@
 import { BoatModel } from './models/boat';
-import { BoatfacilityModel } from './models/boatFacility';
+import { BoatFacilityModel } from './models/boatfacility';
 import { FacilityModel } from './models/facility';
 
 /**
@@ -71,8 +71,8 @@ export class SequelizeSeeder {
             { boat_id: 3, facility_id: 3 },
         ];
 
-        await BoatfacilityModel.bulkCreate(
-            boatFacilities as BoatfacilityModel[]
+        await BoatFacilityModel.bulkCreate(
+            boatFacilities as BoatFacilityModel[]
         );
     }
 }

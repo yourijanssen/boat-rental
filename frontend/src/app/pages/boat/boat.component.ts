@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Boat } from 'src/app/interfaces/boat';
 import { BoatService } from 'src/app/services/boat.service';
+import { HeaderService } from 'src/app/services/header.service';
 
 /**
  * @author Youri Janssen
@@ -27,8 +28,25 @@ export class BoatComponent implements OnInit {
     constructor(
         private boatService: BoatService,
         private route: ActivatedRoute,
-        private router: Router
-    ) {}
+        private router: Router,
+        private headerService: HeaderService
+    ) {
+        this.assignHeaderData();
+    }
+
+    /**
+     * @function assignHeaderData is dedicated to giving data to the Header Service so it knows that to display on this webpage.
+     * @param headerTitle
+     * @author Marcus K.
+     */
+    private assignHeaderData(): void {
+        this.headerService.assignHeaderData({
+            title: 'boten',
+            biggerBanner: false,
+            search: false,
+            colour: '#456ed8'
+        });
+    }
 
     /**
      * @author Youri Janssen
@@ -96,7 +114,7 @@ export class BoatComponent implements OnInit {
      * @param {string} searchTerm - The search term used for the update.
      */
     private updateSearchResults(searchTerm: string): void {
-        this.router.navigate(['/boat'], {
+        this.router.navigate(['/boten'], {
             queryParams: { q: searchTerm }
         });
         this.hasSearched = true;

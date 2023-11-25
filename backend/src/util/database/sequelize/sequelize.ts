@@ -2,16 +2,20 @@ import { Sequelize } from 'sequelize-typescript';
 import config from 'dotenv';
 import { Dialect } from 'sequelize/types/sequelize';
 import { UserModel } from './models/user';
+import { Session } from './models/session';
 import { BoatModel } from './models/boat';
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { SequelizeSeeder } from './seeder';
+import { BoatFacilityModel } from './models/boatfacility';
+import BoatImageModel from './models/boatimage';
+import BoatTypeModel from './models/boatmodel';
 import { FacilityModel } from './models/facility';
-import { BoatfacilityModel } from './models/boatFacility';
 
 // Initialize environment variables from a .env file.
 config.config();
 
 /**
- * @author Youri Janssen
+ * @author Youri Janssen, Thijs van Rixoort
  * A utility class for managing a Sequelize instance for Sequelize-based database connections.
  */
 export class SequelizeDatabaseConfig {
@@ -76,9 +80,13 @@ export class SequelizeDatabaseConfig {
         try {
             SequelizeDatabaseConfig.sequelize.addModels([
                 UserModel,
+                Session,
                 BoatModel,
                 FacilityModel,
-                BoatfacilityModel,
+                BoatFacilityModel,
+
+                BoatImageModel,
+                BoatTypeModel,
             ]);
             // new SequelizeSeeder().seedFacility();
             // new SequelizeSeeder().seedBoatFacility();

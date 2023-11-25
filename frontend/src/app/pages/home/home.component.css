@@ -30,12 +30,14 @@ h1 {
     font-size: xx-large;
 
     font-weight: 900;
+
+    color: #f8f8f8;
 }
 
 button {
     margin-inline: auto;
     font-size: xx-large;
-    
+
     font-weight: 900;
     text-decoration: none;
     padding: 1.5rem;

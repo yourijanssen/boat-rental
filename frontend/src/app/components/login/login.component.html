@@ -1,0 +1,28 @@
+<h1>Inloggen</h1>
+<section class="formSection">
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <label for="email">E-mailadres</label>
+        <input
+            type="email"
+            id="email"
+            formControlName="email"
+            placeholder="bv. johndoe@gmail.com"
+            (keyup.enter)="onSubmit()" />
+
+        <label for="password">Wachtwoord</label>
+        <input
+            type="password"
+            id="password"
+            formControlName="password"
+            placeholder="wachtwoord"
+            (keyup.enter)="onSubmit()" />
+
+        <button type="submit">Log In</button>
+    </form>
+
+    <p *ngIf="this.error !== ''" class="errorText">{{ this.error }}</p>
+
+    <a routerLink="registreren"
+        >Heb je nog geen account? Registreer dan hier.</a
+    >
+</section>
